@@ -7,7 +7,14 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 })
 export class IncrementadorComponent implements OnInit {
 
-  @ViewChild('txtProgress') txtProgress: ElementRef;
+  @ViewChild('txtProgress')
+  private _txtProgress: ElementRef;
+  public get txtProgress(): ElementRef {
+    return this._txtProgress;
+  }
+  public set txtProgress(value: ElementRef) {
+    this._txtProgress = value;
+  }
 
   @Input() progreso: number = 50;
   @Input('nombre') leyenda: string = 'Leyenda';
